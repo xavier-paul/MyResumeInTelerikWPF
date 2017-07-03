@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ResumeData" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="Skill" nillable="true">
+    <xs:complexType>
+      <xs:simpleContent msdata:ColumnName="Skill_Text" msdata:Ordinal="2">
+        <xs:extension base="xs:string">
+          <xs:attribute name="level" type="xs:string" />
+          <xs:attribute name="index" type="xs:string" />
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResumeData" msdata:IsDataSet="true" msdata:Locale="en-US">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="Skill" />
+        <xs:element name="Home">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HomeElement" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent msdata:ColumnName="HomeElement_Text" msdata:Ordinal="2">
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="icon" type="xs:string" />
+                      <xs:attribute name="index" type="xs:string" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="icon" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Jobs">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Job" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent msdata:ColumnName="Job_Text" msdata:Ordinal="6">
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="icon" type="xs:string" />
+                      <xs:attribute name="name" type="xs:string" />
+                      <xs:attribute name="firm" type="xs:string" />
+                      <xs:attribute name="startingDate" type="xs:string" />
+                      <xs:attribute name="endingDate" type="xs:string" />
+                      <xs:attribute name="index" type="xs:string" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="icon" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Hobbies">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Hobbie" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent msdata:ColumnName="Hobbie_Text" msdata:Ordinal="1">
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="index" type="xs:string" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="icon" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Languages">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Language" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent msdata:ColumnName="Language_Text" msdata:Ordinal="1">
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="index" type="xs:string" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="icon" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Learning">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Learn" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent msdata:ColumnName="Learn_Text" msdata:Ordinal="5">
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="index" type="xs:string" />
+                      <xs:attribute name="firm" type="xs:string" />
+                      <xs:attribute name="year" type="xs:string" />
+                      <xs:attribute name="length" type="xs:string" />
+                      <xs:attribute name="name" type="xs:string" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="icon" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Skills">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Management" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="Skill" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                  <xs:attribute name="icon" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Technical" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="Skill" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                  <xs:attribute name="category" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="icon" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

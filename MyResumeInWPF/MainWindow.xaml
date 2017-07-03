@@ -1,0 +1,265 @@
+﻿<Window x:Class="MyResume.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Mon CV"  MinHeight="570" MinWidth="515"
+        Height="600" Width="800" 
+        Cursor="Hand" WindowStartupLocation="CenterScreen"
+        Background="LightSteelBlue">
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
+    <Grid>
+        <Grid>
+            <TabControl Margin="0,0,0,0">
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Logos/Home.png" Width="24" Margin="0 0 4 0"/>
+                            <TextBlock Text="Etat Civil" Foreground="Blue" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <StackPanel>
+                            <Border BorderBrush="Silver" BorderThickness="2" CornerRadius="8,8,3,3">
+
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <GradientStop Color="LightCyan" Offset="0.0" />
+                                        <GradientStop Color="LightBlue" Offset="0.5" />
+                                        <GradientStop Color="DarkTurquoise" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <ListView Margin="1" Name="m_civilList" Background="Transparent" BorderThickness="0">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <WrapPanel>
+                                                <Image Source="{Binding Value.IconForElement}" Width="24" Height="24" Margin="2" />
+                                                <TextBlock Text="{Binding Value.Description}" FontWeight="Bold" Foreground="BlueViolet"/>
+                                            </WrapPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Border>
+                        </StackPanel>
+                        <DockPanel Width="780" Height="350" Margin="0,130,0,0">
+                            <WebBrowser Name="m_googleMaps" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                                        Margin="2,2,2,2" Width="Auto" Height="Auto" />
+                        </DockPanel>
+
+                    </Grid>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Logos/jobs.png" Width="24" Margin="0 0 4 0"/>
+                            <TextBlock Text="Parcours professionnel" Foreground="Red" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <ListView Name="m_jobsList">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <DockPanel>
+                                            <Border BorderBrush="Silver" BorderThickness="1" CornerRadius="8,8,3,3">
+
+                                                <Border.Background>
+                                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                        <GradientStop Color="LightYellow" Offset="0.0" />
+                                                        <GradientStop Color="Yellow" Offset="0.5" />
+                                                        <GradientStop Color="YellowGreen" Offset="1.0" />
+                                                    </LinearGradientBrush>
+                                                </Border.Background>
+                                            
+                                            <TextBlock Height="40" TextAlignment="Center"
+                                                       FontWeight="Medium"
+                                             Margin="2 2 2 2"
+                                            x:Name="JobLength"
+                                                      
+                                            Text="{Binding Value.JobLengthInFrench}" RenderTransformOrigin="0.5,0.5" >
+                                                <TextBlock.RenderTransform>
+                                                    <TransformGroup>
+                                                        <RotateTransform Angle="-90"/>
+                                                    </TransformGroup>
+                                                </TextBlock.RenderTransform>
+                                            </TextBlock>
+                                            </Border>
+                                            <StackPanel>
+                                            <WrapPanel>
+                                                <Image Name="FirmLogo" Source="{Binding Value.IconForElement}" Width="75" Height="Auto" Margin="10 2 2 2" >
+                                                    <Image.RenderTransform>
+                                                        <RotateTransform CenterX="30" CenterY="30" />
+                                                    </Image.RenderTransform>
+                                                    <Image.Triggers>
+                                                        <EventTrigger RoutedEvent="Window.Loaded">
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimation 
+                                                                        Storyboard.TargetName="FirmLogo"
+                                                                        Storyboard.TargetProperty="RenderTransform.Angle"
+                                                                        AutoReverse="True"
+                                                                        From="-15" To="15" Duration="0:0:1.5" RepeatBehavior="Forever" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </EventTrigger>
+                                                    </Image.Triggers>
+                                                </Image>
+                                                <TextBlock Text="{Binding Value.FirmName}" FontWeight="Bold" Margin="5 0 5 0"/>
+                                                <TextBlock Text="{Binding Value.Name}" FontWeight="Bold" Foreground="BlueViolet"/>
+                                            </WrapPanel>
+                                            <TextBlock MinHeight="86" Text="{Binding Value.Description}" FontWeight="Light" Margin="10 0 0 0"/>
+                                        </StackPanel>
+                                        </DockPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Logos/Education.png" Width="24" Margin="0 0 4 0"/>
+                            <TextBlock Text="Compétences techniques" Foreground="Green" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <ListView Margin="10" Name="m_skillsList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Nom" Width="300" DisplayMemberBinding="{Binding Value.Description}" />
+
+                                <GridViewColumn Header="Niveau">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate >
+                                            <ItemsControl ItemsSource="{Binding Value.AllImagesLevel}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Image Source="{Binding}" Width="24" Height="24"></Image>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+
+                        <ListView.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.HeaderTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </GroupStyle.HeaderTemplate>
+                            </GroupStyle>
+                        </ListView.GroupStyle>
+
+                    </ListView>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Logos/case.png" Width="24" Margin="0 0 4 0"/>
+                            <TextBlock Text="Formation continue" Foreground="BlueViolet" />
+                        </StackPanel>
+                    </TabItem.Header>
+
+                    <ListView Margin="10" Name="m_trainingList">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <TextBlock Text="{Binding Value.Year}" FontWeight="Thin" Foreground="BlueViolet"/>
+                                    <TextBlock Text="{Binding Value.Name}" FontWeight="Bold" Foreground="BlueViolet" Margin="5 0 5 0"/>
+                                    <TextBlock Text="{Binding Value.Description}" FontWeight="Light" Foreground="CornflowerBlue"/>
+                                    <TextBlock Text="{Binding Value.Firm}" FontWeight="Light" Margin="5 0 5 0" Foreground="BlueViolet"/>
+                                    <TextBlock Text="{Binding Value.DayLengthInFrench}" FontWeight="Light" Foreground="LimeGreen"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Logos/manager.png" Width="24" Margin="0 0 4 0"/>
+                            <TextBlock Text="Compétences managériales" Foreground="DarkGoldenrod" />
+                        </StackPanel>
+                    </TabItem.Header>
+
+                    <ListView Margin="10" Name="m_managerSkillsList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Nom" Width="300" DisplayMemberBinding="{Binding Value.Description}" />
+
+                                <GridViewColumn Header="Niveau">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate >
+                                            <ItemsControl ItemsSource="{Binding Value.AllImagesLevel}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Image Source="{Binding}" Width="24" Height="24"></Image>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+
+                    </ListView>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Logos/languages.png" Width="24" Margin="0 0 4 0"/>
+                            <TextBlock Text="Langues" Foreground="SaddleBrown" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <ListView Margin="10" Name="m_languagesList">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <TextBlock Text="{Binding Value.Description}" FontWeight="Bold" Foreground="ForestGreen"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Logos/hobbies.png" Width="24" Margin="0 0 4 0"/>
+                            <TextBlock Text="Loisirs" Foreground="SlateBlue" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <ListView Margin="10" Name="m_hobbiesList">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <TextBlock Text="{Binding Value.Description}" FontWeight="Bold" Foreground="SteelBlue"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>

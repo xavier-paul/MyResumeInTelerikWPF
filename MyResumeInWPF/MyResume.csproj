@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A5EB582B-9779-4904-892E-2F91A74B63B2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyResume</RootNamespace>
+    <AssemblyName>MyResume</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SharpDX">
+      <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\SharpDX\SharpDX.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.D3DCompiler">
+      <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\SharpDX\SharpDX.D3DCompiler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1">
+      <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\SharpDX\SharpDX.Direct2D1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D10">
+      <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\SharpDX\SharpDX.Direct3D10.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D9">
+      <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\SharpDX\SharpDX.Direct3D9.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.DXGI">
+      <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\SharpDX\SharpDX.DXGI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls">
+      <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\Telerik.Windows.Controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Chart">
+      <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\Telerik.Windows.Controls.Chart.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Chart.Direct2D">
+      <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\Telerik.Windows.Controls.Chart.Direct2D.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data">
+      <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\Telerik.Windows.Controls.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input">
+      <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\Telerik.Windows.Controls.Input.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data">
+      <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\Telerik.Windows.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Themes.Office_Black">
+      <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\Telerik.Windows.Themes.Office_Black.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Business Logic\AppLocationFinder.cs" />
+    <Compile Include="Business Logic\Entities\LearningResumeElement.cs" />
+    <Compile Include="Business Logic\Entities\SkillsResumeElement.cs" />
+    <Compile Include="Business Logic\Entities\ProResumeElement.cs" />
+    <Compile Include="Business Logic\Entities\SimpleResumeElement.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business Logic\InternetConnectivity.cs" />
+    <Compile Include="Business Logic\Resume.XMLLoader.cs" />
+    <Compile Include="Business Logic\Resume.Languages.cs" />
+    <Compile Include="Business Logic\Resume.Jobs.cs" />
+    <Compile Include="Business Logic\Resume.ManagementSkills.cs" />
+    <Compile Include="Business Logic\Resume.Hobbies.cs" />
+    <Compile Include="Business Logic\Resume.Learning.cs" />
+    <Compile Include="Business Logic\Resume.TechSkills.cs" />
+    <Compile Include="Business Logic\Resume.cs" />
+    <Compile Include="Business Logic\WebBrowserFix.cs" />
+    <Compile Include="Data\ResumeData.cs" />
+    <Compile Include="Data\ResumeData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResumeData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Data\ResumeData.xsc">
+      <DependentUpon>ResumeData.xsd</DependentUpon>
+    </None>
+    <None Include="Data\ResumeData.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ResumeData.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\ResumeData.xss">
+      <DependentUpon>ResumeData.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logos\icones CV.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logos\github.png" />
+    <Resource Include="Logos\manager.png" />
+    <Resource Include="Data\ResumeData.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Content Include="French voice\3-RSSolo4FrenchVirginie.exe" />
+    <Content Include="HomeForGoogleMaps.html" />
+    <Resource Include="Logos\hobbies.png" />
+    <Resource Include="Logos\languages.png" />
+    <Resource Include="Logos\jobs.png" />
+    <Resource Include="Logos\Mail.png" />
+    <Resource Include="Logos\button_ok.png" />
+    <Resource Include="Logos\case.png" />
+    <Resource Include="Logos\Chat.png" />
+    <Resource Include="Logos\Education.png" />
+    <Resource Include="Logos\entreprises\Alstom.png" />
+    <Resource Include="Logos\entreprises\Asais.gif" />
+    <Resource Include="Logos\entreprises\atlas-editions-74641.jpg" />
+    <Resource Include="Logos\entreprises\business-interactif.png" />
+    <Resource Include="Logos\entreprises\digitas.jpg" />
+    <Resource Include="Logos\entreprises\logo_se_green.jpg" />
+    <Resource Include="Logos\entreprises\Opel-Logo-Blitz.png" />
+    <Resource Include="Logos\entreprises\PFG.png" />
+    <Resource Include="Logos\entreprises\sqli.png" />
+    <Resource Include="Logos\GSM.png" />
+    <Resource Include="Logos\Home.png" />
+    <Resource Include="Logos\puces\AQUA.png" />
+    <Resource Include="Logos\puces\CRIMSON.png" />
+    <Resource Include="Logos\puces\FIRE.png" />
+    <Resource Include="Logos\puces\GRAPE.png" />
+    <Resource Include="Logos\puces\GREEN.png" />
+    <Resource Include="Logos\puces\INDIGO.png" />
+    <Resource Include="Logos\puces\MAGENTA.png" />
+    <Resource Include="Logos\puces\MOSS.png" />
+    <Resource Include="Logos\puces\SILVER.png" />
+    <Resource Include="Logos\puces\TEAL.png" />
+    <Resource Include="Logos\puces\YELLOW.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
