@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Speech.Synthesis;
 
 namespace MyResume
@@ -15,7 +16,7 @@ namespace MyResume
         private SortedList<int, SimpleResumeElement> m_hobbies = new SortedList<int, SimpleResumeElement>();
         private SortedList<int, SimpleResumeElement> m_languages = new SortedList<int, SimpleResumeElement>();
         private SortedList<int, SkillsResumeElement> m_managerSkills = new SortedList<int, SkillsResumeElement>();
-
+        private ObservableCollection<SkillsResumeElement> m_techSkills = new ObservableCollection<SkillsResumeElement>();
         public SortedList<int, SimpleResumeElement> Civil
         {
             get
@@ -39,6 +40,18 @@ namespace MyResume
             private set
             {
                 this.m_jobs = value;
+            }
+        }
+
+        public ObservableCollection<SkillsResumeElement> TechSkills
+        {
+            get
+            {
+                return m_techSkills;
+            }
+            private set
+            {
+                m_techSkills = value;
             }
         }
 

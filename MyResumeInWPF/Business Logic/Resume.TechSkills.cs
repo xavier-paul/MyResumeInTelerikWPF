@@ -133,19 +133,28 @@ namespace MyResume
         private void InitTechSkills(ResumeData p_resume)
         {
             ResumeDataSkills v_home = (ResumeDataSkills)p_resume.Items[5];
-            ResumeDataSkillsTechnical v_adr = (ResumeDataSkillsTechnical)v_home.Technical.GetValue(0);
-
-            for (int i = 0; i < v_adr.Skill.Length; i++)
+            for (int j = 0; j < v_home.Technical.Length; j++)
             {
-                Skill v_skill = (Skill)v_adr.Skill.GetValue(i);
+                ResumeDataSkillsTechnical v_adr = (ResumeDataSkillsTechnical)v_home.Technical.GetValue(j);
 
-                int v_index = Convert.ToInt16(v_skill.index);
-                Skills.Add(v_index, new SkillsResumeElement
+                for (int i = 0; i < v_adr.Skill.Length; i++)
                 {
-                    Description = !string.IsNullOrEmpty(v_skill.Value) ? v_skill.Value.ToString().Replace("\\n", Environment.NewLine) : null,
-                    Level = Convert.ToByte(v_skill.level),
-                    Group = (SkillsResumeElement.Category)Enum.Parse(typeof(SkillsResumeElement.Category), v_adr.category, true)
-                });
+                    Skill v_skill = (Skill)v_adr.Skill.GetValue(i);
+
+                    int v_index = Convert.ToInt16(v_skill.index);
+                    SkillsResumeElement v_oneSkill = new SkillsResumeElement
+                    {
+                        Description = !string.IsNullOrEmpty(v_skill.Value) ? v_skill.Value.ToString().Replace("\\n", Environment.NewLine) : null,
+                        Level = Convert.ToByte(v_skill.level),
+                        Group = (SkillsResumeElement.Category)Enum.Parse(typeof(SkillsResumeElement.Category), v_adr.category, true)
+                    };
+
+                    //Pour la version WPF "classique".
+                    Skills.Add(v_index*(10*j+1), v_oneSkill);
+
+                    //Pour le radar Telerik
+                    TechSkills.Add(v_oneSkill);
+                }
             }
         }
     }

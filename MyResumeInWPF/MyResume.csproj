@@ -61,6 +61,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Speech" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -87,9 +89,15 @@
       <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\Telerik.Windows.Controls.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataVisualization">
+      <HintPath>..\..\..\..\Program Files (x86)\Telerik\UI for WPF R2 2017\Binaries\WPF45\Telerik.Windows.Controls.DataVisualization.dll</HintPath>
+    </Reference>
     <Reference Include="Telerik.Windows.Controls.Input">
       <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\Telerik.Windows.Controls.Input.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation">
+      <HintPath>..\..\..\..\Program Files (x86)\Telerik\UI for WPF R2 2017\Binaries\WPF45\Telerik.Windows.Controls.Navigation.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Windows.Data">
       <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\Telerik.Windows.Data.dll</HintPath>
@@ -99,6 +107,8 @@
       <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\Telerik.Windows.Themes.Office_Black.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -113,6 +123,10 @@
     <Compile Include="Business Logic\Entities\SkillsResumeElement.cs" />
     <Compile Include="Business Logic\Entities\ProResumeElement.cs" />
     <Compile Include="Business Logic\Entities\SimpleResumeElement.cs" />
+    <Page Include="MainResume.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -137,6 +151,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResumeData.xsd</DependentUpon>
     </Compile>
+    <Compile Include="MainResume.xaml.cs">
+      <DependentUpon>MainResume.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -156,6 +173,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

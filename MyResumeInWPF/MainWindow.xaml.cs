@@ -16,6 +16,9 @@ namespace MyResume
             FillResume();
 
             ManageGoogleMaps();
+
+            MainResume v_resumeWPF = new MainResume();
+            v_resumeWPF.Show();
         }
 
         private void ManageGoogleMaps()
