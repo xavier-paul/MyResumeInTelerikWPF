@@ -234,7 +234,8 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <WrapPanel>
-                                    <TextBlock Text="{Binding Value.Description}" FontWeight="Bold" Foreground="ForestGreen"/>
+                                    <TextBlock Text="{Binding Value.Name}" FontWeight="Bold" Foreground="ForestGreen" Margin="0 0 3 0"/>
+                                    <TextBlock Text="{Binding Value.Description}" FontWeight="Normal" Foreground="ForestGreen"/>
                                 </WrapPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>

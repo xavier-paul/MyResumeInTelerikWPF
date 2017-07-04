@@ -33,6 +33,18 @@ namespace MyResume
             Resume v_myResume = new Resume();
 
             FillTechnicalSkills(v_myResume.TechSkills);
+            FillLanguages(v_myResume.Languages);
+            FillHobbies(v_myResume.Hobbies);
+        }
+
+        private void FillHobbies(SortedList<int, SimpleResumeElement> p_hobbies)
+        {
+            m_hobbiesList.ItemsSource = from v_hobby in p_hobbies.Values select v_hobby;
+        }
+
+        private void FillLanguages(SortedList<int, SimpleResumeElement> p_languages)
+        {
+            m_allLanguagesCarousel.ItemsSource = from v_lng in p_languages.Values select v_lng;
         }
 
         private void FillTechnicalSkills(ObservableCollection<SkillsResumeElement> p_skills)

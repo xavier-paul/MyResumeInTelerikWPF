@@ -426,6 +426,8 @@ namespace MyResume {
         
         private string indexField;
         
+        private string nameField;
+        
         private string valueField;
         
         /// <remarks/>
@@ -436,6 +438,17 @@ namespace MyResume {
             }
             set {
                 this.indexField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
             }
         }
         

@@ -10,17 +10,20 @@ namespace MyResume
             int v_index = 1;
             Languages.Add(v_index++, new SimpleResumeElement
             {
-                Description = "Français : langue maternelle"
+                Name = "Français",
+                Description = "langue maternelle"
             });
 
             Languages.Add(v_index++, new SimpleResumeElement
             {
-                Description = "Anglais : courant"
+                Name = "Anglais",
+                Description = "courant"
             });
 
             Languages.Add(v_index++, new SimpleResumeElement
             {
-                Description = "Japonais : Débutant (JLPT N5 obtenu en 2014) : lu, écrit, parlé"
+                Name = "Japonais",
+                Description = "Débutant (JLPT N5 obtenu en 2014) : lu, écrit, parlé"
             });
         }
 
@@ -34,6 +37,7 @@ namespace MyResume
                 int v_index = Convert.ToInt16(v_adr.index);
                 Languages.Add(v_index, new SimpleResumeElement
                 {
+                    Name = v_adr.name,
                     Description = v_adr.Value.ToString().Replace("\\n", Environment.NewLine)
                 });
             }
