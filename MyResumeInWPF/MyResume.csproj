@@ -92,6 +92,9 @@
     <Reference Include="Telerik.Windows.Controls.DataVisualization">
       <HintPath>..\..\..\..\Program Files (x86)\Telerik\UI for WPF R2 2017\Binaries\WPF45\Telerik.Windows.Controls.DataVisualization.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.Windows.Controls.Docking">
+      <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\Telerik.Windows.Controls.Docking.dll</HintPath>
+    </Reference>
     <Reference Include="Telerik.Windows.Controls.Input">
       <HintPath>..\lib\RCWPF\2017.2.614.45.NoXaml\Telerik.Windows.Controls.Input.dll</HintPath>
       <Private>True</Private>
