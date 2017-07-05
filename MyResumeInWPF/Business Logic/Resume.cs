@@ -3,7 +3,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Speech.Synthesis;
 
 namespace MyResume
 {
@@ -151,7 +150,6 @@ namespace MyResume
         public Resume()
         {
             ResumeData v_myResumeFromXML = LoadFromXML(AppLocationFinder.Current + @"\Data\ResumeData.xml");
-            Speak();
             //Init();
             Init(v_myResumeFromXML);
         }
@@ -165,40 +163,7 @@ namespace MyResume
             InitTechSkills(p_resume);
             InitLanguages(p_resume);
             InitManagerSkills(p_resume);
-        }
-        
-        public bool CheckVoiceAvailability(SpeechSynthesizer p_speaker, string p_voice)
-        {
-            foreach (InstalledVoice v_allVoices in p_speaker.GetInstalledVoices()) // Je liste les voix installées
-            {
-                if (v_allVoices.VoiceInfo.Name == p_voice)
-                    return true;
-            }
-            return false;
-        }
-
-        private void Speak()
-        {
-            //https://openclassrooms.com/courses/faites-parler-vos-applications-en-net
-            SpeechSynthesizer v_speechSynthesizer = new SpeechSynthesizer();
-
-            string v_voice = "ScanSoft Virginie_Dri40_16kHz";
-            if (CheckVoiceAvailability(v_speechSynthesizer, v_voice)) // Si la voix "Virginie" est installée,
-                v_speechSynthesizer.SelectVoice(v_voice); // alors on l'utilise.
-            else
-                v_speechSynthesizer.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Adult); //sinon on prends la voix par défaut.
-
-            PromptBuilder v_promptBuilder = new PromptBuilder();
-            PromptStyle v_promptStyle = new PromptStyle();
-            v_promptStyle.Volume = PromptVolume.Loud;
-            v_promptStyle.Rate = PromptRate.Slow;
-            v_promptBuilder.StartStyle(v_promptStyle);
-
-            v_promptBuilder.AppendText("Chargement du CV en cours !", PromptEmphasis.Strong);
-            v_promptBuilder.EndStyle();
-
-            v_speechSynthesizer.SpeakAsync(v_promptBuilder);
-        }
+        }      
 
         [Obsolete("Les données se trouvent maintenant dans un fichier XML", false)]
         private void Init()

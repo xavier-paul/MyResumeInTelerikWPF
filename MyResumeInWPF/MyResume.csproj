@@ -150,6 +150,7 @@
     <Compile Include="Business Logic\Resume.Learning.cs" />
     <Compile Include="Business Logic\Resume.TechSkills.cs" />
     <Compile Include="Business Logic\Resume.cs" />
+    <Compile Include="Business Logic\SpeakForMe.cs" />
     <Compile Include="Business Logic\WebBrowserFix.cs" />
     <Compile Include="Data\ResumeData.cs" />
     <Compile Include="Data\ResumeData.Designer.cs">

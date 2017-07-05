@@ -24,6 +24,7 @@ namespace MyResume
     {
         public MainResume()
         {
+            SpeakForMe.Instance.Speak("Bonjour, voici deux versions de mon CV. Une en WPF classique et l'autre en WPF avec les composants Telerik.", System.Speech.Synthesis.PromptRate.Fast);
             InitializeComponent();
             FillResume();
         }
@@ -129,6 +130,7 @@ namespace MyResume
             if (v_selectedItem != null)
             {
                 m_jobsDetails.Text = ((ProResumeElement)v_selectedItem).Description;
+                SpeakForMe.Instance.Speak(m_jobsDetails.Text);
             }
         }
     }
