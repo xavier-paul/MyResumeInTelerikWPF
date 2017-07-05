@@ -123,6 +123,7 @@
     </ApplicationDefinition>
     <Compile Include="Business Logic\AppLocationFinder.cs" />
     <Compile Include="Business Logic\DurationToBrushConverter.cs" />
+    <Compile Include="Business Logic\Entities\JobsList.cs" />
     <Compile Include="Business Logic\Entities\LearningList.cs" />
     <Compile Include="Business Logic\Entities\LearningResumeElement.cs" />
     <Compile Include="Business Logic\Entities\SkillsResumeElement.cs" />

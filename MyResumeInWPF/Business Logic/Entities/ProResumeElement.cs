@@ -68,5 +68,10 @@ namespace MyResume
                 this.m_firmName = value;
             }
         }
+
+        public override string ToString()
+        {
+            return FirmName;
+        }
     }
 }

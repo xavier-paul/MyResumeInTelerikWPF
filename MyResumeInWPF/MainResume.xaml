@@ -28,14 +28,48 @@
                 </StackPanel>
             </Grid>
         </DataTemplate>
+        <DataTemplate x:Key="ToolTipTemplateForJob">
+            <Grid>
+                <Rectangle Margin="0"
+						   RadiusY="2"
+						   RadiusX="2"
+						   Fill="Wheat"
+						   Opacity="0.7"/>
+                <StackPanel Orientation="Horizontal"
+							Margin="8,8,8,12">
+                    <TextBlock FontFamily="Segoe UI" FontWeight="ExtraBold"
+							   Text="{Binding Name}"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
     </Window.Resources>
     
     <Grid>
-
         <telerik:RadDocking>
             <telerik:RadDocking.DocumentHost>
                 <telerik:RadSplitContainer>
                     <telerik:RadPaneGroup>
+                        <telerik:RadPane Header="Parcours professionnel">
+                            <Grid Background="Transparent">
+                                <telerik:RadTimeline Height="250" Name="m_jobsContent"
+                    VerticalAlignment="Top"
+                    Margin="6"
+                    PeriodStart="{Binding Jobs.JobsStartDate, Mode=OneTime}"
+                    PeriodEnd="{Binding Jobs.JobsEndDate, Mode=OneTime}"
+                    StartPath="Date"
+                    DurationPath="Duration"
+                    ToolTipTemplate="{StaticResource ToolTipTemplateForJob}"  
+                    ItemsSource="{Binding Jobs.JobsData}">
+                                    <telerik:RadTimeline.Intervals>
+                                        <telerik:YearInterval />
+                                        <telerik:MonthInterval />
+                                        <telerik:WeekInterval />
+                                        <telerik:DayInterval />
+                                    </telerik:RadTimeline.Intervals>
+                                </telerik:RadTimeline>
+                            </Grid>
+                        </telerik:RadPane>
+                        
                         <telerik:RadPane Header="Compétences Techniques">
                             <Grid Background="Transparent">
                                 <telerik:RadPolarChart Name="m_mainSkillsChart">
@@ -89,24 +123,18 @@
                                 </telerik:RadPolarChart>
                             </Grid>
                         </telerik:RadPane>
-
-                        <telerik:RadPane Header="Parcours professionnel">
-                            <Grid Background="Transparent">
-                                <telerik:RadTimeline Content="RadTimeline" Height="130" PeriodStart="06/28/1999 00:00:00" 
-                                     PeriodEnd="01/09/2017 00:00:00" Width="300" Name="m_jobsContent"/>
-                            </Grid>
-                        </telerik:RadPane>
+                        
                         <telerik:RadPane Header="Formation continue" >
                             <Grid Background="Transparent">
                                 <telerik:RadTimeline Height="250" Name="m_trainingList"
                     VerticalAlignment="Top"
                     Margin="6"
-                    PeriodStart="{Binding TrainingStartDate, Mode=OneTime}"
-                    PeriodEnd="{Binding TrainingEndDate, Mode=OneTime}"
+                    PeriodStart="{Binding Learning.TrainingStartDate, Mode=OneTime}"
+                    PeriodEnd="{Binding Learning.TrainingEndDate, Mode=OneTime}"
                     StartPath="Date"
                     DurationPath="Duration"
                     ToolTipTemplate="{StaticResource ToolTipTemplateForLearning}"  
-                    ItemsSource="{Binding TrainingData}">
+                    ItemsSource="{Binding Learning.TrainingData}">
                                     <telerik:RadTimeline.Intervals>
                                         <telerik:YearInterval />
                                         <telerik:MonthInterval />

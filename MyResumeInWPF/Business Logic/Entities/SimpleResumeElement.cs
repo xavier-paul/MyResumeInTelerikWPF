@@ -50,5 +50,10 @@ namespace MyResume
                 this.m_name = value;
             }
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

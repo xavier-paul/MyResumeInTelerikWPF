@@ -37,19 +37,30 @@ namespace MyResume
             FillManagementSkills(v_myResume.ManagerSkillsForTelerik);
             FillLanguages(v_myResume.Languages);
             FillHobbies(v_myResume.Hobbies);
-            FillLearning(v_myResume.Learning);
+
+            //Pour utiliser un seul DataContext...
+            FillLearningAndJobs(v_myResume.Learning, v_myResume.Jobs);
+
             ManageGoogleMaps();
         }
 
-        private void FillLearning(SortedList<int, LearningResumeElement> p_learning)
+        private void FillLearningAndJobs(SortedList<int, LearningResumeElement> p_learning, SortedList<int, ProResumeElement> p_jobs)
         {
+            //on sélectionne l'intervalle max pour les années de formation...
+            var v_endDateForJobs = p_jobs[p_jobs.Keys.Min<int>()].EndingDate;
+            var v_startDateForJobs = p_jobs[p_jobs.Keys.Max<int>()].StartingDate;
+
             //on sélectionne l'intervalle max pour les années de formation...
             var v_endDate = new DateTime(p_learning[p_learning.Keys.Min<int>()].Year, 12, 31);
             var v_startDate = new DateTime(p_learning[p_learning.Keys.Max<int>()].Year, 1, 1);
 
             //hop, un petit type anonyme, histoire de ne pas rajouter une classe pour ca...
-            this.DataContext = new LearningList { TrainingData = p_learning.Values, TrainingStartDate = v_startDate, TrainingEndDate = v_endDate, };
-        }
+            this.DataContext = new {
+                Jobs = new JobsList { JobsData = p_jobs.Values, JobsStartDate = v_startDateForJobs, JobsEndDate = v_endDateForJobs },
+                Learning = new LearningList { TrainingData = p_learning.Values, TrainingStartDate = v_startDate, TrainingEndDate = v_endDate }
+            };
+        
+        }       
 
         private void FillManagementSkills(ObservableCollection<SkillsResumeElement> p_managerSkills)
         {
@@ -110,7 +121,6 @@ namespace MyResume
             v_technicalSkills.ItemsSource = p_skills;
             v_technicalSkills.Stroke = new SolidColorBrush(p_color);
         }
-
 
     }
 }
