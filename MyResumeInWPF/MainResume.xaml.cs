@@ -44,8 +44,8 @@ namespace MyResume
         private void FillLearning(SortedList<int, LearningResumeElement> p_learning)
         {
             //on sélectionne l'intervalle max pour les années de formation...
-            var v_endDate = new DateTime(p_learning[p_learning.Keys.Min<int>()].Year, 1, 1);
-            var v_startDate = new DateTime(p_learning[p_learning.Keys.Max<int>()].Year, 2, 1);
+            var v_endDate = new DateTime(p_learning[p_learning.Keys.Min<int>()].Year, 12, 31);
+            var v_startDate = new DateTime(p_learning[p_learning.Keys.Max<int>()].Year, 1, 1);
 
             //hop, un petit type anonyme, histoire de ne pas rajouter une classe pour ca...
             this.DataContext = new LearningList { TrainingData = p_learning.Values, TrainingStartDate = v_startDate, TrainingEndDate = v_endDate, };
