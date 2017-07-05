@@ -26,7 +26,6 @@ namespace MyResume
         {
             InitializeComponent();
             FillResume();
-
         }
 
         private void FillResume()
@@ -39,6 +38,7 @@ namespace MyResume
             FillHobbies(v_myResume.Hobbies);
 
             //Pour utiliser un seul DataContext...
+            //https://stackoverflow.com/questions/679933/wpf-binding-multiple-controls-to-different-datacontexts
             FillLearningAndJobs(v_myResume.Learning, v_myResume.Jobs);
 
             ManageGoogleMaps();

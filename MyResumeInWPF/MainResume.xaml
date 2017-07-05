@@ -21,7 +21,7 @@
                 <StackPanel Orientation="Horizontal"
 							Margin="8,8,8,12">
                     <TextBlock FontFamily="Segoe UI" FontWeight="ExtraBold"
-							   Text="{Binding Name}"/>
+							   Text="{Binding Name}" Margin="0 0 4 0"/>
                     <TextBlock FontFamily="Segoe UI"
 							   Text="{Binding DayLengthInFrench, StringFormat=\{0:%d\}}"
 							   Foreground="{Binding DayLength.Value, Converter={StaticResource DurationToBrushConverter}}"/>
@@ -37,8 +37,8 @@
 						   Opacity="0.7"/>
                 <StackPanel Orientation="Horizontal"
 							Margin="8,8,8,12">
-                    <TextBlock FontFamily="Segoe UI" FontWeight="ExtraBold"
-							   Text="{Binding Name}"/>
+                    <TextBlock FontFamily="Segoe UI" FontWeight="ExtraBold" Text="{Binding FirmName}" Margin="0 0 4 0"/>
+                    <TextBlock FontFamily="Segoe UI" FontWeight="Light" Text="{Binding Name}"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -56,8 +56,8 @@
                     Margin="6"
                     PeriodStart="{Binding Jobs.JobsStartDate, Mode=OneTime}"
                     PeriodEnd="{Binding Jobs.JobsEndDate, Mode=OneTime}"
-                    StartPath="Date"
-                    DurationPath="Duration"
+                    StartPath="StartingDate"
+                    DurationPath="JobLength"
                     ToolTipTemplate="{StaticResource ToolTipTemplateForJob}"  
                     ItemsSource="{Binding Jobs.JobsData}">
                                     <telerik:RadTimeline.Intervals>
