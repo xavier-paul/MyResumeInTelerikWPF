@@ -1,4 +1,6 @@
-﻿namespace MyResume
+﻿using System;
+
+namespace MyResume
 {
     public sealed class LearningResumeElement : SimpleResumeElement
     {
@@ -55,6 +57,30 @@
             {
                 this.m_dayLength = value;
             }
+        }
+
+        //Pour le TimeLine Telerik
+        public TimeSpan Duration {
+            get
+            {
+                if (DayLength.HasValue)
+                    return new TimeSpan(DayLength.Value, 0, 0, 0);
+                else
+                    return new TimeSpan(1, 0, 0, 0);
+
+            }
+            private set { }
+        }
+
+        //Pour le TimeLine Telerik
+        public DateTime Date
+        {
+            get
+            {
+                return new DateTime(Year, 1, 1);
+
+            }
+            private set { }
         }
     }
 }

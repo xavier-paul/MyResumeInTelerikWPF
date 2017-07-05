@@ -110,14 +110,18 @@ namespace MyResume
             {
                 ResumeDataLearningLearn v_adr = (ResumeDataLearningLearn)v_home.Learn.GetValue(i);
                 int v_index = Convert.ToInt16(v_adr.index);
-                Learning.Add(v_index, new LearningResumeElement
+                LearningResumeElement v_oneTraining = new LearningResumeElement
                 {
                     Name = v_adr.name,
                     Description = !string.IsNullOrEmpty(v_adr.Value) ? v_adr.Value.ToString().Replace("\\n", Environment.NewLine) : null,
                     Year = Convert.ToUInt16(v_adr.year),
                     Firm = v_adr.firm,
                     DayLength = !string.IsNullOrEmpty(v_adr.length) ? (ushort?)Convert.ToUInt16(v_adr.length) : null
-                });
+                };
+                Learning.Add(v_index, v_oneTraining);
+
+                //Pour la TimeLine Telerik
+                LearningForTelerik.Add(v_oneTraining);
             }
 
         }

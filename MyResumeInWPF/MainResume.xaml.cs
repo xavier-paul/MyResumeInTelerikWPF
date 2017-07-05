@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Telerik.Windows.Controls;
 using Telerik.Windows.Controls.ChartView;
 
 namespace MyResume
@@ -32,10 +33,27 @@ namespace MyResume
         {
             Resume v_myResume = new Resume();
             m_civilList.ItemsSource = v_myResume.Civil;
-            FillTechnicalSkills(v_myResume.TechSkills);
+            FillTechnicalSkills(v_myResume.TechSkillsForTelerik);
+            FillManagementSkills(v_myResume.ManagerSkillsForTelerik);
             FillLanguages(v_myResume.Languages);
             FillHobbies(v_myResume.Hobbies);
+            FillLearning(v_myResume.Learning);
             ManageGoogleMaps();
+        }
+
+        private void FillLearning(SortedList<int, LearningResumeElement> p_learning)
+        {
+            //on sélectionne l'intervalle max pour les années de formation...
+            var v_endDate = new DateTime(p_learning[p_learning.Keys.Min<int>()].Year, 1, 1);
+            var v_startDate = new DateTime(p_learning[p_learning.Keys.Max<int>()].Year, 2, 1);
+
+            //hop, un petit type anonyme, histoire de ne pas rajouter une classe pour ca...
+            this.DataContext = new LearningList { TrainingData = p_learning.Values, TrainingStartDate = v_startDate, TrainingEndDate = v_endDate, };
+        }
+
+        private void FillManagementSkills(ObservableCollection<SkillsResumeElement> p_managerSkills)
+        {
+            AddTechnicalSeries(p_managerSkills.Where(v_oneSkill => v_oneSkill.Group==SkillsResumeElement.Category.Aucun), Colors.SteelBlue, m_mgrkillsChart);
         }
 
         private void ManageGoogleMaps()
@@ -76,15 +94,15 @@ namespace MyResume
 
         private void FillTechnicalSkills(ObservableCollection<SkillsResumeElement> p_skills)
         {
-            AddTechnicalSeries(p_skills.Where(v_oneSkill => v_oneSkill.Group == SkillsResumeElement.Category.Langages), Colors.SteelBlue);
-            AddTechnicalSeries(p_skills.Where(v_oneSkill => v_oneSkill.Group == SkillsResumeElement.Category.Méthodes), Colors.DarkSeaGreen);
-            AddTechnicalSeries(p_skills.Where(v_oneSkill => v_oneSkill.Group == SkillsResumeElement.Category.Outils), Colors.Crimson);
+            AddTechnicalSeries(p_skills.Where(v_oneSkill => v_oneSkill.Group == SkillsResumeElement.Category.Langages), Colors.SteelBlue, m_mainSkillsChart);
+            AddTechnicalSeries(p_skills.Where(v_oneSkill => v_oneSkill.Group == SkillsResumeElement.Category.Méthodes), Colors.DarkSeaGreen, m_mainSkillsChart);
+            AddTechnicalSeries(p_skills.Where(v_oneSkill => v_oneSkill.Group == SkillsResumeElement.Category.Outils), Colors.Crimson, m_mainSkillsChart);
         }
 
-        private void AddTechnicalSeries(IEnumerable<SkillsResumeElement> p_skills, Color p_color)
+        private void AddTechnicalSeries(IEnumerable<SkillsResumeElement> p_skills, Color p_color, RadPolarChart p_chart)
         {
             RadarLineSeries v_technicalSkills = new RadarLineSeries();
-            m_mainSkillsChart.Series.Add(v_technicalSkills);
+            p_chart.Series.Add(v_technicalSkills);
 
             v_technicalSkills.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Description" };
             v_technicalSkills.ValueBinding = new GenericDataPointBinding<SkillsResumeElement, double>() { ValueSelector = v_allSkills => v_allSkills.Level };

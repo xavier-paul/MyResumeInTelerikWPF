@@ -16,7 +16,10 @@ namespace MyResume
         private SortedList<int, SimpleResumeElement> m_hobbies = new SortedList<int, SimpleResumeElement>();
         private SortedList<int, SimpleResumeElement> m_languages = new SortedList<int, SimpleResumeElement>();
         private SortedList<int, SkillsResumeElement> m_managerSkills = new SortedList<int, SkillsResumeElement>();
-        private ObservableCollection<SkillsResumeElement> m_techSkills = new ObservableCollection<SkillsResumeElement>();
+        private ObservableCollection<SkillsResumeElement> m_techSkillsForTelerik = new ObservableCollection<SkillsResumeElement>();
+        private ObservableCollection<SkillsResumeElement> m_managerSkillsForTelerik = new ObservableCollection<SkillsResumeElement>();
+        private ObservableCollection<LearningResumeElement> m_learningForTelerik = new ObservableCollection<LearningResumeElement>();
+
         public SortedList<int, SimpleResumeElement> Civil
         {
             get
@@ -43,15 +46,27 @@ namespace MyResume
             }
         }
 
-        public ObservableCollection<SkillsResumeElement> TechSkills
+        public ObservableCollection<SkillsResumeElement> TechSkillsForTelerik
         {
             get
             {
-                return m_techSkills;
+                return m_techSkillsForTelerik;
             }
             private set
             {
-                m_techSkills = value;
+                m_techSkillsForTelerik = value;
+            }
+        }
+
+        public ObservableCollection<SkillsResumeElement> ManagerSkillsForTelerik
+        {
+            get
+            {
+                return m_managerSkillsForTelerik;
+            }
+            private set
+            {
+                m_managerSkillsForTelerik = value;
             }
         }
 
@@ -117,6 +132,19 @@ namespace MyResume
             set
             {
                 this.m_managerSkills = value;
+            }
+        }
+
+        public ObservableCollection<LearningResumeElement> LearningForTelerik
+        {
+            get
+            {
+                return m_learningForTelerik;
+            }
+
+            set
+            {
+                this.m_learningForTelerik = value;
             }
         }
 

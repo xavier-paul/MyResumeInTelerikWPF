@@ -7,6 +7,29 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         mc:Ignorable="d"
         Title="Mon CV en WPF, version Telerik" Height="Auto" Width="Auto">
+
+    <Window.Resources>
+        <local:DurationToBrushConverter x:Key="DurationToBrushConverter"/>
+
+        <DataTemplate x:Key="ToolTipTemplateForLearning">
+            <Grid>
+                <Rectangle Margin="0"
+						   RadiusY="2"
+						   RadiusX="2"
+						   Fill="Wheat"
+						   Opacity="0.7"/>
+                <StackPanel Orientation="Horizontal"
+							Margin="8,8,8,12">
+                    <TextBlock FontFamily="Segoe UI" FontWeight="ExtraBold"
+							   Text="{Binding Name}"/>
+                    <TextBlock FontFamily="Segoe UI"
+							   Text="{Binding DayLengthInFrench, StringFormat=\{0:%d\}}"
+							   Foreground="{Binding DayLength.Value, Converter={StaticResource DurationToBrushConverter}}"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    
     <Grid>
 
         <telerik:RadDocking>
@@ -40,14 +63,58 @@
                             </Grid>
                         </telerik:RadPane>
 
+                        <telerik:RadPane Header="Compétences Managériales">
+                            <Grid Background="Transparent">
+                                <telerik:RadPolarChart Name="m_mgrkillsChart">
+                                    <telerik:RadPolarChart.Grid>
+                                        <telerik:PolarChartGrid GridLineVisibility="Both" StripesVisibility="Radial">
+                                            <telerik:PolarChartGrid.RadialStripeBrushes>
+                                                <SolidColorBrush Color="#FFD7D7D7" Opacity="0.3" />
+                                                <SolidColorBrush Color="Transparent" />
+                                            </telerik:PolarChartGrid.RadialStripeBrushes>
+                                        </telerik:PolarChartGrid>
+                                    </telerik:RadPolarChart.Grid>
+
+                                    <telerik:RadPolarChart.RadialAxis>
+                                        <telerik:CategoricalRadialAxis />
+                                    </telerik:RadPolarChart.RadialAxis>
+
+                                    <telerik:RadPolarChart.PolarAxis>
+                                        <telerik:PolarAxis Minimum="0"
+								   Maximum="5" />
+                                    </telerik:RadPolarChart.PolarAxis>
+
+                                    <telerik:RadarLineSeries Name="m_radarManagerContent"/>
+
+                                </telerik:RadPolarChart>
+                            </Grid>
+                        </telerik:RadPane>
+
                         <telerik:RadPane Header="Parcours professionnel">
                             <Grid Background="Transparent">
                                 <telerik:RadTimeline Content="RadTimeline" Height="130" PeriodStart="06/28/1999 00:00:00" 
-                                     PeriodEnd="01/09/2017 00:00:00" Width="300"/>
+                                     PeriodEnd="01/09/2017 00:00:00" Width="300" Name="m_jobsContent"/>
                             </Grid>
                         </telerik:RadPane>
                         <telerik:RadPane Header="Formation continue" >
-                            <Grid Background="Transparent"/>
+                            <Grid Background="Transparent">
+                                <telerik:RadTimeline Height="250" Name="m_trainingList"
+                    VerticalAlignment="Top"
+                    Margin="6"
+                    PeriodStart="{Binding TrainingStartDate, Mode=OneTime}"
+                    PeriodEnd="{Binding TrainingEndDate, Mode=OneTime}"
+                    StartPath="Date"
+                    DurationPath="Duration"
+                    ToolTipTemplate="{StaticResource ToolTipTemplateForLearning}"  
+                    ItemsSource="{Binding TrainingData}">
+                                    <telerik:RadTimeline.Intervals>
+                                        <telerik:YearInterval />
+                                        <telerik:MonthInterval />
+                                        <telerik:WeekInterval />
+                                        <telerik:DayInterval />
+                                    </telerik:RadTimeline.Intervals>
+                                </telerik:RadTimeline>
+                            </Grid>
                         </telerik:RadPane>
                     </telerik:RadPaneGroup>
                 </telerik:RadSplitContainer>

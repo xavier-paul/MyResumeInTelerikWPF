@@ -153,7 +153,7 @@ namespace MyResume
                     Skills.Add(v_index*(10*j+1), v_oneSkill);
 
                     //Pour le radar Telerik
-                    TechSkills.Add(v_oneSkill);
+                    TechSkillsForTelerik.Add(v_oneSkill);
                 }
             }
         }
