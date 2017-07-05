@@ -122,5 +122,14 @@ namespace MyResume
             v_technicalSkills.Stroke = new SolidColorBrush(p_color);
         }
 
+        private void m_jobsContent_SelectionChanged(object sender, SelectionChangeEventArgs e)
+        {
+            var v_selectedItem = (sender as RadTimeline).SelectedItem;
+
+            if (v_selectedItem != null)
+            {
+                m_jobsDetails.Text = ((ProResumeElement)v_selectedItem).Description;
+            }
+        }
     }
 }

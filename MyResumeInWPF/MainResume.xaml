@@ -50,24 +50,30 @@
                 <telerik:RadSplitContainer>
                     <telerik:RadPaneGroup>
                         <telerik:RadPane Header="Parcours professionnel">
-                            <Grid Background="Transparent">
-                                <telerik:RadTimeline Height="250" Name="m_jobsContent"
-                    VerticalAlignment="Top"
-                    Margin="6"
-                    PeriodStart="{Binding Jobs.JobsStartDate, Mode=OneTime}"
-                    PeriodEnd="{Binding Jobs.JobsEndDate, Mode=OneTime}"
-                    StartPath="StartingDate"
-                    DurationPath="JobLength"
-                    ToolTipTemplate="{StaticResource ToolTipTemplateForJob}"  
-                    ItemsSource="{Binding Jobs.JobsData}">
-                                    <telerik:RadTimeline.Intervals>
-                                        <telerik:YearInterval />
-                                        <telerik:MonthInterval />
-                                        <telerik:WeekInterval />
-                                        <telerik:DayInterval />
-                                    </telerik:RadTimeline.Intervals>
-                                </telerik:RadTimeline>
-                            </Grid>
+                           <StackPanel>
+                               <Grid Background="Transparent">
+
+                                    <telerik:RadTimeline Height="250" Name="m_jobsContent"
+                                        VerticalAlignment="Top"
+                                        SelectionMode="Single"
+				                        IsSelectionEnabled="True"
+                                        Margin="6"
+                                        PeriodStart="{Binding Jobs.JobsStartDate, Mode=OneTime}"
+                                        PeriodEnd="{Binding Jobs.JobsEndDate, Mode=OneTime}"
+                                        StartPath="StartingDate"
+                                        DurationPath="JobLength"
+                                        SelectionChanged="m_jobsContent_SelectionChanged"
+                                        ToolTipTemplate="{StaticResource ToolTipTemplateForJob}"  
+                                        ItemsSource="{Binding Jobs.JobsData}">
+                                        <telerik:RadTimeline.Intervals>
+                                            <telerik:YearInterval />
+                                            <telerik:MonthInterval />
+                                            <telerik:WeekInterval />
+                                            <telerik:DayInterval />
+                                        </telerik:RadTimeline.Intervals>
+                                    </telerik:RadTimeline>
+                                </Grid>
+                            <TextBlock Name="m_jobsDetails" Margin="3,4,0,0"></TextBlock> </StackPanel>
                         </telerik:RadPane>
                         
                         <telerik:RadPane Header="Compétences Techniques">
