@@ -4,7 +4,7 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         Title="Mon CV en WPF 'Classique'"  MinHeight="570" MinWidth="515"
         Height="600" Width="800" 
-        Cursor="Hand" WindowStartupLocation="CenterScreen"
+        Cursor="Hand" WindowStartupLocation="Manual" Top="200" Left="550"
         Background="LightSteelBlue">
     <Window.Effect>
         <DropShadowEffect/>

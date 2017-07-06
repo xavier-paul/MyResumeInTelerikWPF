@@ -6,11 +6,17 @@
         xmlns:local="clr-namespace:MyResume"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         mc:Ignorable="d"
-        Title="Mon CV en WPF, version Telerik" Height="Auto" Width="Auto">
+        Title="Mon CV en WPF, version Telerik" Height="Auto" Width="Auto"
+        WindowStartupLocation="Manual" Top="0" Left="0">
 
     <Window.Resources>
         <local:DurationToBrushConverter x:Key="DurationToBrushConverter"/>
 
+        <Storyboard RepeatBehavior="Forever" x:Key="m_scrollText">
+            <DoubleAnimation Name="m_firstLoop" Storyboard.TargetProperty="(Canvas.Left)" From="0" To="-140" BeginTime="0:00:00" Duration="0:00:04" />
+            <DoubleAnimation Name="m_secondLoop" Storyboard.TargetProperty="(Canvas.Left)" From="-140" To="0"  BeginTime="0:00:04" Duration="0:00:04" />
+        </Storyboard>
+        
         <DataTemplate x:Key="ToolTipTemplateForLearning">
             <Grid>
                 <Rectangle Margin="0"
@@ -156,6 +162,7 @@
                         
                         <telerik:RadPane Header="Formation continue" >
                             <Grid Background="Transparent">
+                                <StackPanel>
                                 <telerik:RadTimeline Height="250" Name="m_trainingList"
                     VerticalAlignment="Top"
                     Margin="6"
@@ -172,6 +179,22 @@
                                         <telerik:DayInterval />
                                     </telerik:RadTimeline.Intervals>
                                 </telerik:RadTimeline>
+
+                                    <ListView Margin="10" Name="m_trainingListTextVersion">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <WrapPanel>
+                                                    <TextBlock Text="{Binding Value.Year}" FontWeight="Thin" Foreground="BlueViolet"/>
+                                                    <TextBlock Text="{Binding Value.Name}" FontWeight="Bold" Foreground="BlueViolet" Margin="5 0 5 0"/>
+                                                    <TextBlock Text="{Binding Value.Description}" FontWeight="Light" Foreground="CornflowerBlue"/>
+                                                    <TextBlock Text="{Binding Value.Firm}" FontWeight="Light" Margin="5 0 5 0" Foreground="BlueViolet"/>
+                                                    <TextBlock Text="{Binding Value.DayLengthInFrench}" FontWeight="Light" Foreground="LimeGreen"/>
+                                                </WrapPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+
+                                </StackPanel>
                             </Grid>
                         </telerik:RadPane>
                     </telerik:RadPaneGroup>
@@ -215,23 +238,19 @@
                         <Grid Background="Transparent">
                             <Grid.Resources>
                                 <DataTemplate x:Key="v_hobbiesItemTemplate">
-                                    <Border Width="160"	Height="100" Padding="10">
+                                    <Border Width="160"	Height="40" Padding="10">
                                         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <StackPanel Orientation="Horizontal">
                                                     <!--  <ScrollViewer VerticalScrollBarVisibility="Auto" Width="140" 
                                                  HorizontalScrollBarVisibility="Auto">
                                                 -->
-                                                    <Canvas Canvas.Left="0" Canvas.Top="0" ClipToBounds="True" Background="Transparent" Height="100" Width="160"  >
-                                                        <TextBlock Text="{Binding Description}">
+                                                    <Canvas Canvas.Left="0" Canvas.Top="0" ClipToBounds="True" Background="Transparent" Height="40" Width="160"  >
+                                                        <TextBlock Text="{Binding Description}" Loaded="Hobbies_Loaded">
                                                             <TextBlock.Triggers>
                                                                 <EventTrigger RoutedEvent="Loaded">
-                                                                    <BeginStoryboard>
-                                                                        <Storyboard RepeatBehavior="Forever">
-                                                                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)" From="0" To="-140" BeginTime="0:00:00" Duration="0:00:04" />
-                                                                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)" From="-140" To="0"  BeginTime="0:00:04" Duration="0:00:04" />
-                                                                        </Storyboard>
-                                                                    </BeginStoryboard>
-                                                                </EventTrigger>
+                                                                <BeginStoryboard Storyboard="{StaticResource m_scrollText}"/>
+
+                                                            </EventTrigger>
                                                             </TextBlock.Triggers>
                                                         </TextBlock>
                                                     </Canvas>

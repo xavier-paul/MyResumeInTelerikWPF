@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Telerik.Windows.Controls;
@@ -60,7 +61,8 @@ namespace MyResume
                 Jobs = new JobsList { JobsData = p_jobs.Values, JobsStartDate = v_startDateForJobs, JobsEndDate = v_endDateForJobs },
                 Learning = new LearningList { TrainingData = p_learning.Values, TrainingStartDate = v_startDate, TrainingEndDate = v_endDate }
             };
-        
+
+            m_trainingListTextVersion.ItemsSource = p_learning;
         }       
 
         private void FillManagementSkills(ObservableCollection<SkillsResumeElement> p_managerSkills)
@@ -145,6 +147,32 @@ namespace MyResume
         private void m_allLanguagesCarousel_Loaded(object sender, RoutedEventArgs e)
         {
             m_allLanguagesCarousel.BringDataItemIntoView(m_allLanguagesCarousel.Items[0]);
+        }
+
+        private void Hobbies_Loaded(object sender, RoutedEventArgs e)
+        {
+            int v_len = (sender as TextBlock).Text.Length;
+          
+            Storyboard v_scroll = (Storyboard)FindResource("m_scrollText");
+            
+            try
+            {
+                if (v_scroll != null)
+                {
+                    if (v_len < 10)
+                    {
+                        v_scroll.AutoReverse = false;
+                        v_scroll.Remove();
+                        v_scroll.Stop();
+                    }
+                  //  else
+                    //    v_scroll.Begin();
+                }
+            }
+            catch (Exception v_ex)
+            {
+                MessageBox.Show(v_ex.Message);
+            }
         }
     }
 }
