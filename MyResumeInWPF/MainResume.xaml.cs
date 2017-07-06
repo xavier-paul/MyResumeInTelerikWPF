@@ -106,7 +106,7 @@ namespace MyResume
         {
             m_allLanguagesCarousel.ItemsSource = from v_lng in p_languages.Values select v_lng;
             m_allLanguagesCarousel.SelectedItem = m_allLanguagesCarousel.Items[0];
-        }
+         }
 
         private void FillTechnicalSkills(ObservableCollection<SkillsResumeElement> p_skills)
         {

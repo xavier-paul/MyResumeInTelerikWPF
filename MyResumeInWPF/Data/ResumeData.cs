@@ -428,6 +428,8 @@ namespace MyResume {
         
         private string nameField;
         
+        private string flagField;
+        
         private string valueField;
         
         /// <remarks/>
@@ -449,6 +451,17 @@ namespace MyResume {
             }
             set {
                 this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string flag {
+            get {
+                return this.flagField;
+            }
+            set {
+                this.flagField = value;
             }
         }
         

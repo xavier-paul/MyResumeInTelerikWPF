@@ -209,6 +209,12 @@
     <Resource Include="Logos\icones CV.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Logos\drapeaux\French.jpg" />
+    <Resource Include="Logos\drapeaux\French_mini.jpg" />
+    <Resource Include="Logos\drapeaux\Nihon.jpg" />
+    <Resource Include="Logos\drapeaux\Nihon_mini.jpg" />
+    <Resource Include="Logos\drapeaux\USUK.jpg" />
+    <Resource Include="Logos\drapeaux\USUK_mini.jpg" />
     <Resource Include="Logos\github.png" />
     <Resource Include="Logos\manager.png" />
     <Resource Include="Data\ResumeData.xml">

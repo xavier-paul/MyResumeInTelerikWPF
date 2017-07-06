@@ -38,7 +38,8 @@ namespace MyResume
                 Languages.Add(v_index, new SimpleResumeElement
                 {
                     Name = v_adr.name,
-                    Description = v_adr.Value.ToString().Replace("\\n", Environment.NewLine)
+                    Description = v_adr.Value.ToString().Replace("\\n", Environment.NewLine),
+                    IconForElement = v_adr.flag
                 });
             }
 

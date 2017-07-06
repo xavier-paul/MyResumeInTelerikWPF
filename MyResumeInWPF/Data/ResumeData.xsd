@@ -73,10 +73,11 @@
             <xs:sequence>
               <xs:element name="Language" nillable="true" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:simpleContent msdata:ColumnName="Language_Text" msdata:Ordinal="2">
+                  <xs:simpleContent msdata:ColumnName="Language_Text" msdata:Ordinal="3">
                     <xs:extension base="xs:string">
                       <xs:attribute name="index" type="xs:string" />
                       <xs:attribute name="name" type="xs:string" />
+                      <xs:attribute name="flag" type="xs:string" />
                     </xs:extension>
                   </xs:simpleContent>
                 </xs:complexType>
