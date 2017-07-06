@@ -107,7 +107,14 @@
                         </telerik:RadPane>
                         
                         <telerik:RadPane Header="Compétences Techniques">
-                            <Grid Background="Transparent">
+                            <Grid>
+                                <Grid.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="PaleTurquoise" Offset="0.0" />
+                                        <GradientStop Color="LightCyan" Offset="0.5" />
+                                        <GradientStop Color="Azure" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Grid.Background>
                                 <telerik:RadPolarChart Name="m_mainSkillsChart">
                                     <telerik:RadPolarChart.Grid>
                                         <telerik:PolarChartGrid GridLineVisibility="Both" StripesVisibility="Radial">
@@ -134,7 +141,15 @@
                         </telerik:RadPane>
 
                         <telerik:RadPane Header="Compétences Managériales">
-                            <Grid Background="Transparent">
+                            <Grid>
+                                <Grid.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="Honeydew" Offset="0.0" />
+                                        <GradientStop Color="Azure" Offset="0.5" />
+                                        <GradientStop Color="MintCream" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Grid.Background>
+                                
                                 <telerik:RadPolarChart Name="m_mgrkillsChart">
                                     <telerik:RadPolarChart.Grid>
                                         <telerik:PolarChartGrid GridLineVisibility="Both" StripesVisibility="Radial">
@@ -163,7 +178,8 @@
                         <telerik:RadPane Header="Formation continue" >
                             <Grid Background="Transparent">
                                 <StackPanel>
-                                <telerik:RadTimeline Height="250" Name="m_trainingList"
+                                   
+                                    <telerik:RadTimeline Height="250" Name="m_trainingList"
                     VerticalAlignment="Top"
                     Margin="6"
                     PeriodStart="{Binding Learning.TrainingStartDate, Mode=OneTime}"
@@ -181,6 +197,14 @@
                                 </telerik:RadTimeline>
 
                                     <ListView Margin="10" Name="m_trainingListTextVersion">
+                                        <ListView.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="BurlyWood" Offset="0.0" />
+                                                <GradientStop Color="Khaki" Offset="0.5" />
+                                                <GradientStop Color="Bisque" Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </ListView.Background>
+                                        
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <WrapPanel>
