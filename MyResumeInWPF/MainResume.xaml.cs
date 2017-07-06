@@ -99,7 +99,7 @@ namespace MyResume
         private void FillHobbies(SortedList<int, SimpleResumeElement> p_hobbies)
         {
             m_hobbiesList.ItemsSource = from v_hobby in p_hobbies.Values select v_hobby;
-            m_hobbiesList.SelectedItem = m_hobbiesList.Items[0];
+            m_hobbiesList.SelectedItem = m_hobbiesList.Items[2];
         }
 
         private void FillLanguages(SortedList<int, SimpleResumeElement> p_languages)
