@@ -97,11 +97,13 @@ namespace MyResume
         private void FillHobbies(SortedList<int, SimpleResumeElement> p_hobbies)
         {
             m_hobbiesList.ItemsSource = from v_hobby in p_hobbies.Values select v_hobby;
+            m_hobbiesList.SelectedItem = m_hobbiesList.Items[0];
         }
 
         private void FillLanguages(SortedList<int, SimpleResumeElement> p_languages)
         {
             m_allLanguagesCarousel.ItemsSource = from v_lng in p_languages.Values select v_lng;
+            m_allLanguagesCarousel.SelectedItem = m_allLanguagesCarousel.Items[0];
         }
 
         private void FillTechnicalSkills(ObservableCollection<SkillsResumeElement> p_skills)
