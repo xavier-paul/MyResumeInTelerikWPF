@@ -73,7 +73,31 @@
                                         </telerik:RadTimeline.Intervals>
                                     </telerik:RadTimeline>
                                 </Grid>
-                            <TextBlock Name="m_jobsDetails" Margin="3,4,0,0"></TextBlock> </StackPanel>
+
+                                <WrapPanel>
+                                    <Image Name="m_firmLogo" Width="75" Height="Auto" Margin="10 2 2 2" >
+                                        <Image.RenderTransform>
+                                            <RotateTransform CenterX="30" CenterY="30" />
+                                        </Image.RenderTransform>
+                                    <Image.Triggers>
+                                        <EventTrigger RoutedEvent="Image.Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation 
+                                                                        Storyboard.TargetName="m_firmLogo"
+                                                                        Storyboard.TargetProperty="RenderTransform.Angle"
+                                                                        AutoReverse="True"
+                                                                        From="-15" To="15" Duration="0:0:1.5" RepeatBehavior="Forever" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                                </WrapPanel>
+                                <TextBlock Name="m_jobFirmName" FontWeight="Bold" Margin="5 0 5 0"/>
+                                <TextBlock Name="m_jobTitle" FontWeight="Bold" Foreground="BlueViolet"/>
+                                <TextBlock Name="m_jobsDetails" Margin="3,4,0,0"></TextBlock>
+                           </StackPanel>
                         </telerik:RadPane>
                         
                         <telerik:RadPane Header="Compétences Techniques">
@@ -194,7 +218,7 @@
                                     <Border Width="200"	Height="60" Padding="10">
                                         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock>
+                                                <TextBlock TextWrapping="Wrap" >
                                                  <Run Text="{Binding Description}" />
                                                 </TextBlock>
                                             </StackPanel>
@@ -216,7 +240,7 @@
                                         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <StackPanel Orientation="Vertical">
                                                 <TextBlock Text="{Binding Name}"/>
-                                                <TextBlock Text="{Binding Description}" />
+                                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
                                             </StackPanel>
                                         </Grid>
                                     </Border>

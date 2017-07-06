@@ -130,7 +130,14 @@ namespace MyResume
             if (v_selectedItem != null)
             {
                 m_jobsDetails.Text = ((ProResumeElement)v_selectedItem).Description;
+                m_jobFirmName.Text = ((ProResumeElement)v_selectedItem).FirmName;
+                m_jobTitle.Text = ((ProResumeElement)v_selectedItem).Name;
+
                 SpeakForMe.Instance.Speak(m_jobsDetails.Text);
+
+                BitmapImage v_logo = new BitmapImage(new Uri("pack://application:,,,/"+ ((ProResumeElement)v_selectedItem).IconAsRsc));
+                //v_logo.BaseUri = new Uri(((ProResumeElement)v_selectedItem).IconForElement, UriKind.Absolute);
+                m_firmLogo.Source = v_logo;
             }
         }
     }
