@@ -138,9 +138,13 @@ namespace MyResume
                 SpeakForMe.Instance.Speak(m_jobsDetails.Text);
 
                 BitmapImage v_logo = new BitmapImage(new Uri("pack://application:,,,/"+ ((ProResumeElement)v_selectedItem).IconAsRsc));
-                //v_logo.BaseUri = new Uri(((ProResumeElement)v_selectedItem).IconForElement, UriKind.Absolute);
                 m_firmLogo.Source = v_logo;
             }
+        }
+
+        private void m_allLanguagesCarousel_Loaded(object sender, RoutedEventArgs e)
+        {
+            m_allLanguagesCarousel.BringDataItemIntoView(m_allLanguagesCarousel.Items[0]);
         }
     }
 }
