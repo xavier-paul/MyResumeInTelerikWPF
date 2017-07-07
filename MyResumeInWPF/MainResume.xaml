@@ -143,7 +143,7 @@
                             <Grid>
                                 <Grid.Background>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                        <GradientStop Color="Honeydew" Offset="0.0" />
+                                        <GradientStop Color="LightSteelBlue" Offset="0.0" />
                                         <GradientStop Color="Azure" Offset="0.5" />
                                         <GradientStop Color="MintCream" Offset="1.0" />
                                     </LinearGradientBrush>
@@ -185,9 +185,13 @@
                     PeriodEnd="{Binding Learning.TrainingEndDate, Mode=OneTime}"
                     StartPath="Date"
                     DurationPath="Duration"
+                    MinZoomRange="31.00:00:00"
                     ToolTipTemplate="{StaticResource ToolTipTemplateForLearning}"  
+                    ScrollMode="ScrollAndZoom"
+                    VisiblePeriodStart="2014-01-01"
+                    VisiblePeriodEnd="2016-02-01"
                     ItemsSource="{Binding Learning.TrainingData}">
-                                    <telerik:RadTimeline.Intervals>
+                                        <telerik:RadTimeline.Intervals>
                                         <telerik:YearInterval />
                                         <telerik:MonthInterval />
                                         <telerik:WeekInterval />
